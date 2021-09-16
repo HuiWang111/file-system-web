@@ -1,7 +1,7 @@
 {
     "name": "file-system-web",
     "version": "0.1.0",
-    "main": "index.js",
+    "main": "dist/index.js",
     "license": "MIT",
     "devDependencies": {
         "@types/node": "^16.9.1",
