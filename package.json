@@ -18,7 +18,7 @@
     },
     "scripts": {
         "build": "tsc --declaration --sourceMap false --downlevelIteration --skipLibCheck --jsx react --module es2015 --target es2015 --outDir dist",
-        "server": "serve example -p 3003",
+        "start": "serve example -p 3003",
         "build:iife": "rollup --config rollup.config.js"
     }
 }

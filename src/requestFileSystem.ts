@@ -9,8 +9,6 @@ export const requestTemporaryFileSystem = (size: number): Promise<DOMFileSystem>
         navigator.webkitTemporaryStorage.requestQuota(
             size,
             (grantedBytes: number) => {
-                console.info(`remaining temporary storage space is ${grantedBytes} bytes`);
-
                 nativeRequestFileSystem(
                     TEMPORARY,
                     grantedBytes,
@@ -34,8 +32,6 @@ export const requestPersistentFileSystem = (size: number): Promise<DOMFileSystem
         navigator.webkitPersistentStorage.requestQuota(
             size,
             (grantedBytes: number) => {
-                console.info(`remaining persistent storage space is ${grantedBytes} bytes`);
-
                 nativeRequestFileSystem(
                     PERSISTENT,
                     grantedBytes,

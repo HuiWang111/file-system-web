@@ -1,2 +1,2 @@
 import { RequestFileSystemConfig, FileEntry } from '../interface';
-export declare const readRootDir: (requestFSConfig: RequestFileSystemConfig) => Promise<FileEntry[]>;
+export declare const readRootDir: ({ type, size }?: RequestFileSystemConfig) => Promise<FileEntry[]>;

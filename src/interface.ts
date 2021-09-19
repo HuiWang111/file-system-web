@@ -86,3 +86,8 @@ export interface WriteFileConfig {
 export interface RemoveDirConfig {
     recursive: boolean;
 }
+
+export interface FSInfoResult {
+    currentUsageInBytes: number;
+    currentQuotaInBytes: number;
+}

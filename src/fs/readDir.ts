@@ -7,20 +7,26 @@ import {
 } from '../requestFileSystem';
 
 export const readRootDir = async (
-    requestFSConfig: RequestFileSystemConfig
+    {
+        type = TEMPORARY,
+        size = 0
+    }: RequestFileSystemConfig = {
+        type: TEMPORARY,
+        size: 0
+    }
 ): Promise<FileEntry[]> => {
-    if (requestFSConfig.type !== TEMPORARY && requestFSConfig.type !== PERSISTENT) {
-        return Promise.reject('requestFSConfig.type is incorrect');
+    if (type !== TEMPORARY && type !== PERSISTENT) {
+        return Promise.reject('[readRootDir] requestFSConfig.type is incorrect');
     }
 
     let fs: DOMFileSystem | undefined;
     let requestFSError: string | undefined;
 
     try {
-        if (requestFSConfig.type === TEMPORARY) {
-            fs = await requestTemporaryFileSystem(requestFSConfig.size);
+        if (type === TEMPORARY) {
+            fs = await requestTemporaryFileSystem(size);
         } else {
-            fs = await requestPersistentFileSystem(requestFSConfig.size);
+            fs = await requestPersistentFileSystem(size);
         }
     } catch (e) {
         requestFSError = e;

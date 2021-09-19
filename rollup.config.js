@@ -3,5 +3,6 @@ export default {
     output: {
         file: 'example/bundle.js',
         format: 'iife'
-    }
+    },
+    context: 'window'
 };

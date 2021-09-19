@@ -8,20 +8,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import { requestPersistentFileSystem, requestTemporaryFileSystem, TEMPORARY, PERSISTENT } from '../requestFileSystem';
-export const writeFile = (file, content, requestFSConfig, { append = false } = {
+export const writeFile = (file, content, { type = TEMPORARY, size = 0 } = {
+    type: TEMPORARY,
+    size: 0
+}, { append = false } = {
     append: false
 }) => __awaiter(void 0, void 0, void 0, function* () {
-    if (requestFSConfig.type !== TEMPORARY && requestFSConfig.type !== PERSISTENT) {
-        return Promise.reject('requestFSConfig.type is incorrect');
+    if (type !== TEMPORARY && type !== PERSISTENT) {
+        return Promise.reject('[writeFile] requestFSConfig.type is incorrect');
     }
     let fs;
     let requestFSError;
     try {
-        if (requestFSConfig.type === TEMPORARY) {
-            fs = yield requestTemporaryFileSystem(requestFSConfig.size);
+        if (type === TEMPORARY) {
+            fs = yield requestTemporaryFileSystem(size);
         }
         else {
-            fs = yield requestPersistentFileSystem(requestFSConfig.size);
+            fs = yield requestPersistentFileSystem(size);
         }
     }
     catch (e) {
