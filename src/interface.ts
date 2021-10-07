@@ -75,8 +75,8 @@ export interface DOMFileSystem {
 }
 
 export interface RequestFileSystemConfig {
-    size: number;
-    type: 0 | 1;
+    size?: number;
+    type?: 0 | 1;
 }
 
 export interface WriteFileConfig {
@@ -84,7 +84,7 @@ export interface WriteFileConfig {
 }
 
 export interface RemoveDirConfig {
-    recursive: boolean;
+    recursive?: boolean;
 }
 
 export interface FSInfoResult {
